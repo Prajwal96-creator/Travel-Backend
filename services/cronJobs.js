@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS
   }
 });
-
+console.log(process.env.APP_URL)
 // Verify email configuration on startup
 transporter.verify((error, success) => {
   if (error) {
@@ -49,7 +49,7 @@ async function sendArrivalConfirmationEmail(trip, studentEmail) {
       <p>If you haven't arrived yet, please ignore this email.</p>
     `
   };
-
+console.log(process.env.APP_URL)
   try {
     await transporter.sendMail(mailOptions);
     console.log(`✅ Arrival confirmation email sent to ${studentEmail} for trip ${trip._id}`);
